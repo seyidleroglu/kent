@@ -9,6 +9,7 @@ export default {
       name: 'Abd'
     }
   },
+  components: {},
   computed: {},
   mounted() { },
   methods: {},

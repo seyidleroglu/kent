@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import Part1 from "../src/views/Form/part1.vue";
+// import Part1 from "../src/views/Form/part1.vue";
+import Part1 from "@/views/Form/part1.vue";
 import Part2 from "@/views/Form/part2.vue";
 
 export default {
