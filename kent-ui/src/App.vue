@@ -1,16 +1,23 @@
 <template>
   <div>
-  <PartTest></PartTest>
-  <Part-Test></Part-Test>
-  <part-test></part-test>
-  <parttest></parttest>
-  <Part2 />
+    
+  <h1>Kent Belediyesi</h1>
+    <p>
+      <!-- use the router-link component for navigation. -->
+      <!-- specify the link by passing the `to` prop. -->
+      <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+      <router-link to="/" class="btn btn-info">Ana Sayfa</router-link>
+      <router-link to="/for" class="btn btn-info">For</router-link>
+      <router-link to="/componet" class="btn btn-info">Componet</router-link>
+      <router-link to="/form" class="btn btn-info">Form</router-link>
+    </p>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Part1 from "../src/views/Form/part1.vue";
-import Part2 from "@/views/Form/part2.vue";
 
 export default {
   data() {
@@ -19,7 +26,7 @@ export default {
     }
   },
   components: {
-    'PartTest':Part1,Part2
+    
   },
   computed: {},
   mounted() { },
