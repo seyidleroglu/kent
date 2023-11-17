@@ -1,23 +1,24 @@
 <template>
      <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label" >{{labelDeger}}</label>
+                <label for="exampleFormControlInput1" class="form-label" >{{ labelvalue }}</label>
                 <input type="text" class="form-control" id="ad" v-model="value" :on-keyup="$emit('inputDeger',value)">
               </div>
+              {{ value }}
 </template>
 
 <script>
 
 export default {
-    // name: "input-ad",
+    name: "adsoyad-giris",
     // props: ['deger'],
     props: {
         labelvalue: { type: String, required: false, default: ""},
         deger: { type: String, required: true, default: ""},
     },
+    emits: ["inputDeger"],
     data() {
         return {
             value:this.deger,
-            labelDeger:this.labelvalue
         }
     },
     watch: {
@@ -26,11 +27,7 @@ export default {
                 this.value = gelen_value
             },
         },
-        labelvalue: {
-            handler: function (gelen_value) {
-                this.labelDeger = gelen_value
-            },
-        },
+        
     },
 
 }

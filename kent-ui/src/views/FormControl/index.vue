@@ -2,8 +2,8 @@
     <div>
         <div v-show="errormsg.length>0">{{ errormsg }}</div>
        <!-- <inputAd :deger="item.ad" @inputDeger="gelenAd($event)"></inputAd> -->
-       <inputAd :deger="item.ad" :labelvalue="Ad" @inputDeger="($event) => (item.ad = $event)"></inputAd>
-       <inputAd :deger="item.soyad" :labelvalue="Soyad" @inputDeger="($event) => (item.soyad = $event)"></inputAd>
+       <inputAd :deger="item.ad" labelvalue="Ad" @inputDeger="($event) => (item.ad = $event)"></inputAd>
+       <inputAd :deger="item.soyad" labelvalue="Soyad" @inputDeger="($event) => (item.soyad = $event)"></inputAd>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" v-model="item.email">
@@ -29,7 +29,7 @@ export default {
         return {
             errormsg:"",
             item: {
-                ad: "",
+                ad: "ssss",
                 soyad:"",
                 email: "",
                 aciklama: "",

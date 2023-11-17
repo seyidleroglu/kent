@@ -8,8 +8,8 @@
     <div>{{ item.sehir.length }}</div>
     <div v-show="item.sehir.length != 5">Deneme</div>
     <br />
-    <input v-model="item.sehir">
-    <input v-model="item.sehir" :disabled="kontrol">
+    <!-- <input v-model="item.sehir"> -->
+    <!-- <input v-model="item.sehir" :disabled="kontrol"> -->
   </li>
 
   {{ kontrol }}
