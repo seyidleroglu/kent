@@ -22,7 +22,8 @@
           <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-              
+              <button to="{ path: '/sabit/bolge' }" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım</p></button>
+                        <button to="{ name: 'sabit_bolge' }" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım2</p></button>
             <!-- /.row (main row) -->
           </div><!-- /.container-fluid -->
           </div><!-- /.container-fluid -->
