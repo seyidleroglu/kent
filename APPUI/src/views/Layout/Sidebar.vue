@@ -69,15 +69,14 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="/sabit/bolge" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım</p></a>
-                      <a @click="$router.push({ path: '/sabit/bolge' })" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım 2</p></a>
-                      <a @click="$router.push({ name: 'sabit_bolge' })" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım 3</p></a>
+                      <router-link to="/sabit/bolge" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım</p></router-link>
+                      <!-- <a href="/sabit/bolge" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım</p></a> -->
+                      <!-- <a @click="$router.push({ path: '/sabit/bolge' })" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım 2</p></a> -->
+                      <!-- <a @click="$router.push({ name: 'sabit_bolge' })" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bölge Tanıtım 3</p></a> -->
                     </li>
                     <li class="nav-item">
-                      <a href="/sabit/butce" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Bütçe Kodları Tanıtım</p>
-                      </a>
+                      <!-- <a href="/sabit/butce" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bütçe Kodları Tanıtım</p></a> -->
+                      <router-link to="/sabit/butce" class="nav-link"><i class="far fa-dot-circle nav-icon"></i><p>Bütçe Kodları Tanıtım</p></router-link>
                     </li>
                    
                   </ul>
