@@ -17,6 +17,7 @@
                 </div>
                 <div class="col">
                     <button class="btn btn-info" @click="liste()">Liste</button>
+                    <button class="btn btn-info" @click="listeAxios()">ListeAxios</button>
                     <button class="btn btn-info" @click="kayit()">Kayıt</button>
                 </div>
             </div>
@@ -45,12 +46,13 @@
                 :sortable="sortable" @is-finished="tableLoadingFinish" />
         </div>
 
-        <!-- {{ items }} -->
+        {{ items }}
     </div>
 </template>
 
 <script>
 import VueTableLite from "vue3-table-lite";
+import axios from "axios"
 
 export default {
     data() {
@@ -105,6 +107,30 @@ export default {
 
             this.totalRecordCount = this.items.length
 
+        },
+        listeAxios() {
+            var adres = 'https://jsonplaceholder.typicode.com/todos'
+            if (this.item.kodu > 0)
+                adres = adres + "/" + this.item.kodu
+
+                var res =[]
+                axios.get(adres)
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                    // console.log(response.data);
+                    res =response.data
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+                console.log(res.data)
+           this.items=JSON.stringify(res.data)
+            this.totalRecordCount = this.items.length
         },
         tableLoadingFinish() {
             this.isLoading = false;
