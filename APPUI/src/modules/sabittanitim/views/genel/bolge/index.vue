@@ -108,18 +108,15 @@ export default {
             this.totalRecordCount = this.items.length
 
         },
-        listeAxios() {
+        async listeAxios() {
+            var _items=[]
             var adres = 'https://jsonplaceholder.typicode.com/todos'
             if (this.item.kodu > 0)
                 adres = adres + "/" + this.item.kodu
 
-                var res =[]
-                axios.get(adres)
+               await axios.get(adres)
                 .then(function (response) {
-                    // handle success
-                    console.log(response);
-                    // console.log(response.data);
-                    res =response.data
+                    _items = response.data
                 })
                 .catch(function (error) {
                     // handle error
@@ -128,9 +125,8 @@ export default {
                 .finally(function () {
                     // always executed
                 });
-                console.log(res.data)
-           this.items=JSON.stringify(res.data)
-            this.totalRecordCount = this.items.length
+                this.items=_items
+            console.log("items", this.items);
         },
         tableLoadingFinish() {
             this.isLoading = false;

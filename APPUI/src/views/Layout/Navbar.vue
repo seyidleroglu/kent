@@ -48,7 +48,7 @@
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <img :src="user1" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       Brad Diesel
@@ -64,7 +64,7 @@
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <img :src="user8" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       John Pierce
@@ -80,7 +80,7 @@
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <img :src="user3" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       Nora Silvester
@@ -139,7 +139,17 @@
 </template>
 
 <script>
+import user1 from "@/../dist/img/user1-128x128.jpg";
+import user3 from "@/../dist/img/user3-128x128.jpg";
+import user8 from "@/../dist/img/user8-128x128.jpg";
+
 export default {
-    name:"Navbar",
+  name: "Navbar",
+  data() {
+    return {
+      baseUrl: window.location.origin,
+      user1, user3, user8
+    }
+  },
 }
 </script>
