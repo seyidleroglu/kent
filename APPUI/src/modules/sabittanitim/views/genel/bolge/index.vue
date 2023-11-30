@@ -95,12 +95,12 @@ export default {
     computed: {},
     mounted() { },
     methods: {
-        liste() {
+        async liste() {
             var adres = 'https://jsonplaceholder.typicode.com/todos'
             if (this.item.kodu > 0)
                 adres = adres + "/" + this.item.kodu
 
-            fetch(adres)
+            await fetch(adres)
                 .then(response => response.json())
                 .then(json => this.items = json)
             // .then(json => console.log(json))
@@ -109,31 +109,52 @@ export default {
 
         },
         async listeAxios() {
-            var _items=[]
+            var _items = []
             var adres = 'https://jsonplaceholder.typicode.com/todos'
             if (this.item.kodu > 0)
                 adres = adres + "/" + this.item.kodu
 
-               await axios.get(adres)
+            await axios.get(adres)
                 .then(function (response) {
+                    console.log("then");
                     _items = response.data
                 })
+                // .then(function (response) {
+                //     console.log("then2");
+                //     _items = response.data
+                // })
                 .catch(function (error) {
                     // handle error
+                    console.log("catch");
                     console.log(error);
                 })
                 .finally(function () {
                     // always executed
+                    console.log("finally");
                 });
-                this.items=_items
+            this.items = _items
             console.log("items", this.items);
         },
         tableLoadingFinish() {
             this.isLoading = false;
         },
-        kayit() {
-            console.log("item", this.item)
-        }
+        async kayit() {
+            var adres = 'https://jsonplaceholder.typicode.com/todos'
+
+            await axios.post(adres, {
+                ...this.item,
+                "userId": 1,
+                "title": "deneme",
+                "completed": true,
+                "TEST":"BÜYÜK"
+            })
+                .then(function (response) {
+                    console.log("response",response);
+                })
+                .catch(function (error) {
+                    console.log("error",error);
+                });
+        },
     },
     watch: {},
 };
