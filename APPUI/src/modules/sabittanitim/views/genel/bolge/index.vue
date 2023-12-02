@@ -16,12 +16,13 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button class="btn btn-info" @click="liste()" :disabled="isLoading">Liste</button>
-                    <button class="btn btn-info" @click="liste2()" :disabled="isLoading">User</button>
+                    <button class="btn btn-info" @click="fetchData()" :disabled="isLoading">Liste</button>
+                    <button class="btn btn-info" @click="fetchDataUser()" :disabled="isLoading">User</button>
                     <button class="btn btn-info" @click="kayit()" :disabled="isLoading">Kayıt</button>
                 </div>
             </div>
         </div>
+        Count2:        {{ count }}
         Count:        {{ items.length }}
         <div class="row">
             <!-- <table class="table" v-if="items.length>0">
@@ -52,18 +53,19 @@
 
 <script>
 import VueTableLite from "vue3-table-lite";
-import { toRaw } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useGenelStore } from '@/modules/sabittanitim/stores/genel/bolge/index'
 
 const { count,items, tableColumns, isLoading, totalRecordCount, sortable } = storeToRefs(useGenelStore())
-const { getItems, getUser, liste } = useGenelStore()
+// const { getItems, getUser, liste } = useGenelStore()
+const storeGenel = useGenelStore()
 
 export default {
     data() {
         return {
             count, tableColumns, isLoading, totalRecordCount, sortable,
-            tableItems:[], items,
+            tableItems: [], items,
+            count2:storeGenel.count,
             item: {
                 kodu: 0,
                 bolge_adi: "text"
@@ -73,18 +75,20 @@ export default {
     components: { VueTableLite },
     computed: {},
     mounted() {
-        liste("todos")
+        this.fetchData()
      },
     methods: {
-        async liste() {
+        async fetchData() {
+            console.log("test")
             this.tableItems =[]
-            await liste("todos")
+            await storeGenel.liste("todos")
                 .then(() => {
-                    this.tableItems =getItems
+                    this.tableItems = storeGenel.getItems()
                 })
         },
-        async liste2() {
-            this.tableItems =getUser(this.item.kodu)
+        async fetchDataUser() {
+            // this.tableItems =getUser(this.item.kodu)
+            this.tableItems = storeGenel.getUser(this.item.kodu)
         },
         async kayit() {
         },

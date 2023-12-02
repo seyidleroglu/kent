@@ -1,5 +1,5 @@
 // import { ref, computed } from 'vue'
-import { toRaw } from 'vue'
+// import { toRaw } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
@@ -37,8 +37,10 @@ export const useGenelStore = defineStore({
     ]
   }),
   getters: {
-    getItems(state) {
-      return state.items
+    getItems: (state) =>()=>
+    {
+      var a = state.items
+      return a
     },
     getUser: (state) => (userId) => {
       var a = state.items.filter((x) => x.userId == userId)
@@ -51,6 +53,7 @@ export const useGenelStore = defineStore({
      * @param {string} name
      */
     async liste(name) {
+      this.count++
       this.isLoading = true
       var adres = 'https://jsonplaceholder.typicode.com/' + name
 
