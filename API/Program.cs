@@ -10,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(opt =>
+            opt.AddDefaultPolicy(policy =>
+            policy.WithOrigins("http://127.0.0.1:4000").SetIsOriginAllowedToAllowWildcardSubdomains()
+            .AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+       ));
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -23,8 +28,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors();
+//app.UseAuthorization();
 
 app.MapControllers();
 

@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        Count3:        {{ getCountTopla }}
         Count2:        {{ count }}
         Count:        {{ items.length }}
         <div class="row">
@@ -64,7 +65,8 @@ export default {
     data() {
         return {
             count, tableColumns, isLoading, totalRecordCount, sortable,
-            tableItems: [], items,
+            tableItems: [],
+            items,
             count2:storeGenel.count,
             item: {
                 kodu: 0,
@@ -73,7 +75,12 @@ export default {
         }
     },
     components: { VueTableLite },
-    computed: {},
+    computed: {
+        getCountTopla() {
+            var s = this.count+this.tableItems.length;
+            return s
+        }
+    },
     mounted() {
         this.fetchData()
      },
@@ -96,6 +103,27 @@ export default {
             this.isLoading = false;
         },
     },
-    watch: {},
+    watch: {
+        // item: {
+        //     handler: function () {
+        //          console.log("item")
+        //         this.fetchDataUser();
+        //     },
+        //     deep: true,
+        // },
+        "item.kodu": {
+            handler: function (value) {
+                console.log("a", value)
+                this.fetchDataUser();
+            }, 
+        },
+        // "item.bolge_adi": {
+        //     handler: function () {
+        //          console.log("item.bolge_adi")
+        //         this.fetchDataUser();
+        //     },
+        //     // deep: true,
+        // },
+    },
 };
 </script>
